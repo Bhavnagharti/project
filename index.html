@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My School</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">My School</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<div class="hero">
+  <div class="hero-text">
+    <h1>Boost your Mind to get best Result</h1>
+    <p>Welcome to Student Management System</p>
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search courses...">
+  <button onclick="searchCourse()">Search</button>
+</div>
+  </div>
+</div>
+
+<div class="content">
+  <h2>WELCOME TO OUR SCHOOL</h2>
+  <p>We provide high quality education and a great environment for students.</p>
+</div>
+
+
+<section class="courses">
+  <h2>Popular Courses</h2>
+
+  <div class="course-box">
+
+    <div class="card">
+      <img src="science.jpg">
+      <h3>Science</h3>
+    </div>
+
+    <div class="card">
+      <img src="math.jpg">
+      <h3>Mathematics</h3>
+    </div>
+
+    <div class="card">
+      <img src="other languages.jpg">
+      <h3>Other languages</h3>
+    </div>
+<div class="card">
+      <img src="artificial intelligence.jpg">
+      <h3>Artificial Intelligence</h3>
+    </div>
+  </div>
+</section>
+<footer>
+  <p>© 2026 My School</p>
+</footer>
+<script>
+function searchCourse() {
+  let input = document.getElementById("searchInput").value.toLowerCase();
+
+  if (input.includes("science")) {
+    window.location.href = "courses.html";
+  } 
+  else if (input.includes("math")) {
+    window.location.href = "courses.html";
+  } 
+  else if (input.includes("artificial intelligence")) {
+    window.location.href = "courses.html";
+  } 
+else if (input.includes("other languages")) {
+    window.location.href = "courses.html";
+}
+  else {
+    alert("Course not found!");
+  }
+}
+</script>
+</body>
+</html>
