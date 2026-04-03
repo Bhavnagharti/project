@@ -1,0 +1,188 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  padding: 15px 30px;
+}
+
+.logo {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links li {
+  display: inline;
+  margin-left: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.nav-links a:hover {
+  color: #f4b400;
+}
+
+/* Hero Section */
+.hero {
+  height: 90vh;
+  background: url("school.jpg") no-repeat center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 40px;
+}
+
+.hero-text p {
+  font-size: 18px;
+}
+
+/* Content */
+.content {
+  padding: 50px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+.course-box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.card {
+  width: 250px;
+  text-align: center;
+}
+
+.card img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+/* Center Popular Courses heading and cards */
+.courses {
+  text-align: center;       /* centers the heading */
+  padding: 50px;
+}
+
+.courses h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Cards in one line and centered */
+.course-box {
+  display: flex;
+  justify-content: center;  /* centers the cards in a row */
+  gap: 20px;
+  flex-wrap: nowrap;
+  margin-top: 20px;
+}
+
+/* Individual cards */
+.card {
+  width: 250px;
+  text-align: center;
+}
+
+/* Images inside cards same size */
+.card img {
+  width: 250px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 50px;
+}
+
+.card {
+  width: 250px;
+  padding: 30px 20px;
+  text-align: center;
+  color: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.icon {
+  font-size: 30px;
+  background: white;
+  color: black;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.card p {
+  font-size: 14px;
+}
+
+/* Colors */
+.red { background: #ff3c1f; }
+.green { background: #1abc9c; }
+.purple { background: #6c5ce7; }
+.course-card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #555;
+}
+.card {
+  border: 5px solid red;
+}
