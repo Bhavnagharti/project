@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+
+<div class="navbar">
+  <div class="logo">My School</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+<li><a href="admission.html">Admission Form</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+<body class="login-page">
+<h2 style="text-align:center;">Admin Login</h2>
+
+<div class="login-box">
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+
+    <button onclick="login()">Login</button>
+</div>
+
+<script>
+function login() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user === "admin" && pass === "1234") {
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Invalid Login");
+    }
+}
+</script>
+
+</body>
+</html>
