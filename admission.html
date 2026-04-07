@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo">GEORGE MASON HIGH SCHOOL</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="courses.html">Courses</a></li>
+    <li><a href="admission.html">Admission Form</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
+
+<!-- Form -->
+<div class="form-container">
+
+    <h1>School Admission Form</h1>
+    <p class="subtitle">
+        Please complete this form to gather essential student information.
+    </p>
+
+    <form id="admissionForm">
+
+        <!-- Name -->
+        <label>Name *</label>
+        <div class="row">
+            <input type="text" name="first_name" placeholder="First Name" required>
+            <input type="text" name="last_name" placeholder="Last Name" required>
+        </div>
+
+        <!-- DOB -->
+        <label>Date of Birth *</label>
+        <input type="date" name="dob" required>
+
+        <!-- Gender -->
+        <label>Gender *</label>
+        <div class="radio-group">
+            <label><input type="radio" name="gender" value="Male" required> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+        </div>
+
+        <!-- Class -->
+        <label>Select Class *</label>
+        <select name="student_class" required>
+            <option value="">-- Select Class --</option>
+            <option>Class 1</option>
+            <option>Class 2</option>
+            <option>Class 3</option>
+            <option>Class 4</option>
+            <option>Class 5</option>
+            <option>Class 6</option>
+            <option>Class 7</option>
+            <option>Class 8</option>
+            <option>Class 9</option>
+            <option>Class 10</option>
+        </select>
+
+        <!-- Contact -->
+        <label>Mobile Number *</label>
+        <input type="text" name="mobile" placeholder="Enter mobile number" required>
+
+        <br>
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <!-- Message -->
+    <p id="responseMessage"></p>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    <a href="admin.html" style="font-size:12px;">Admin Login</a>
+</footer>
+
+<footer>
+  <p>© 2026 My School</p>
+</footer>
+
+<!-- JavaScript to send data to Node.js -->
+<script>
+document.getElementById("admissionForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+
+    const data = {
+        first_name: formData.get("first_name"),
+        last_name: formData.get("last_name"),
+        dob: formData.get("dob"),
+        gender: formData.get("gender"),
+        student_class: formData.get("student_class"),
+        mobile: formData.get("mobile")
+    };
+
+    try {
+        const response = await fetch("http://localhost:3000/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.text();
+
+        document.getElementById("responseMessage").innerText = result;
+        this.reset();
+
+    } catch (error) {
+        document.getElementById("responseMessage").innerText = "Error submitting form!";
+    }
+});
+</script>
+
+</body>
+</html>
