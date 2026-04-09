@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  h1, h2 { text-align: center; }
+  .block { margin-bottom: 40px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  th, td { border: 1px solid #333; padding: 8px; text-align: center; }
+  th { background-color: #f0f0f0; }
+  button { padding: 5px 10px; margin: 2px; cursor: pointer; }
+  .approve { background-color: green; color: white; }
+  .reject { background-color: red; color: white; }
+</style>
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<!-- Pending Students -->
+<div class="block">
+<h2>Pending Admissions</h2>
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>DOB</th>
+    <th>Gender</th>
+    <th>Class</th>
+    <th>Mobile No</th>
+    <th>Action</th>
+  </tr>
+</thead>
+<tbody id="pending-table">
+  <!-- Pending students will load here -->
+</tbody>
+</table>
+</div>
+
+<!-- Approved Students -->
+<div class="block">
+<h2>Approved Students</h2>
+<table>
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>DOB</th>
+    <th>Gender</th>
+    <th>Class</th>
+    <th>Mobile No</th>
+  </tr>
+</thead>
+<tbody id="approved-table">
+  <!-- Approved students will load here -->
+</tbody>
+</table>
+</div>
+
+<script>
+const serverUrl = 'http://localhost:3000'; // Your Node.js server URL
+
+// Load pending admissions
+async function loadPending() {
+  const res = await fetch(`${serverUrl}/admissions/pending`);
+  const data = await res.json();
+  const tbody = document.getElementById('pending-table');
+  tbody.innerHTML = '';
+  data.forEach(a => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${a.student_name}</td>
+      <td>${a.dob}</td>
+      <td>${a.gender}</td>
+      <td>${a.class}</td>
+      <td>${a.mobile}</td>
+      <td>
+        <button class="approve" onclick="updateStatus(${a.id}, 'approved')">Accept</button>
+        <button class="reject" onclick="updateStatus(${a.id}, 'rejected')">Reject</button>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Load approved students
+async function loadApproved() {
+  const res = await fetch(`${serverUrl}/students`);
+  const data = await res.json();
+  const tbody = document.getElementById('approved-table');
+  tbody.innerHTML = '';
+  data.forEach(a => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${a.name}</td>
+      <td>${a.dob}</td>
+      <td>${a.gender}</td>
+      <td>${a.class}</td>
+      <td>${a.mobile}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+// Accept or reject student
+async function updateStatus(id, status) {
+  await fetch(`${serverUrl}/admissions/${id}/status`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ status })
+  });
+  loadPending();
+  loadApproved();
+}
+
+// Initial load
+loadPending();
+loadApproved();
+</script>
+</body>
+</html>
